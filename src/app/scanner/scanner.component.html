@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="card-body">
+        <h3>Captura o escanea el código del producto</h3>
+
+        <form [formGroup]="formVenta" (ngSubmit)="procesar()">
+            <div class="mb-2 mt-4">
+                <label class="form-label">
+                    Código
+                </label>
+                <input type="number" formControlName="codigo" class="form-control" placeholder="Ingresa el código de barras">
+            </div>
+
+            <button class="btn btn-primary" [disabled]="formVenta.invalid">
+                Agregar
+            </button>
+           
+            <div [class]="messageClass" [hidden]="isHidden">
+                {{ label_productoAdded }}
+            </div>
+        </form>
+    </div>
+</div>

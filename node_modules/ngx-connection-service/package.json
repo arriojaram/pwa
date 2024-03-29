@@ -1,0 +1,51 @@
+{
+  "name": "ngx-connection-service",
+  "version": "17.0.1",
+  "description": "Detects whether browser has an active internet connection or not in Angular application.",
+  "keywords": [
+    "detect",
+    "internet",
+    "connection",
+    "angular",
+    "service",
+    "HTTP",
+    "angular",
+    "angular17",
+    "internet-connection",
+    "connectivity",
+    "health-check"
+  ],
+  "author": "M. Yıldıray Meric",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yildiraymeric/ngx-connection-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yildiraymeric/ngx-connection-service/issues"
+  },
+  "homepage": "https://github.com/yildiraymeric/ngx-connection-service",
+  "peerDependencies": {
+    "@angular/common": ">=17",
+    "@angular/core": ">=17",
+    "rxjs": ">=6.6",
+    "ssr-window": ">=4.0"
+  },
+  "module": "fesm2022/ngx-connection-service.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2022": "./esm2022/ngx-connection-service.mjs",
+      "esm": "./esm2022/ngx-connection-service.mjs",
+      "default": "./fesm2022/ngx-connection-service.mjs"
+    }
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

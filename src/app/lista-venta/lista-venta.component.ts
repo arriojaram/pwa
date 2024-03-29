@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { VentaService } from '../venta.service';
 import { CommonModule } from '@angular/common';
+import { DbService } from '../db.service';
+import { Producto } from '../producto';
 
 @Component({
   selector: 'app-lista-venta',
@@ -10,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './lista-venta.component.css'
 })
 export class ListaVentaComponent {
-  constructor(public ventaService: VentaService)
+  constructor(public ventaService: VentaService, public dbService: DbService)
   {
     this.isHidden = true;
   }
@@ -28,14 +30,9 @@ export class ListaVentaComponent {
     return !terminarVenta;
   }
   
-  finalizarVenta()
+  async finalizarVenta()
   {
-    const newProduct = {
-      title: 'Test Product',
-      description: 'This is a test product',
-      price: 100,
-      // Agrega más propiedades según el API espera
-    };
+    const newProduct = this.ventaService.ventaProductos[0];
 
     this.isHidden = false;
          
@@ -47,12 +44,19 @@ export class ListaVentaComponent {
           this.messageClass = "alert  alert-success mt-2";
           this.ventaService.ventaProductos = [];
         },
-        error: (error) => {
-          this.messageClass = "alert  alert-danger mt-2";
-          this.message = `Error: ${JSON.stringify(error)}`;
+        error: async (error) => {
+          this.messageClass = "alert  alert-warning mt-2";
+          
+          try {
+            const id = await this.dbService.addProduct(newProduct);
+            console.log('Added product with id:', id);
+            this.message = `Venta registrada: ${JSON.stringify(error)}`;
+          } catch (error) {
+            console.error('Error adding product:', error);
+          }
         }
     });
-
+    this.ventaService.ventaProductos = [];
     setTimeout(() => {
       this.isHidden = true; // Oculta el div después de X segundos
   }, 5000);

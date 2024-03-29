@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { VentaService } from "../venta.service";  
 import { CommonModule } from "@angular/common"; 
-  
 
 @Component({
     selector: 'app-scanner',

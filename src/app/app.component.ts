@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ListaVentaComponent } from './lista-venta/lista-venta.component';
 import { ScannerComponent } from './scanner/scanner.component';
+import { ConnectionService, ConnectionServiceModule } from 'ngx-connection-service';
+import { Subject, debounceTime, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,32 @@ import { ScannerComponent } from './scanner/scanner.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
+
+  hasNetworkConnection: boolean = true;
+  hasInternetAccess: boolean = true;
+  status: string = "";
+
+  private unsubscribe$: Subject<void> = new Subject();
+
+  constructor(private connectionService: ConnectionService) {
+    this.connectionService.monitor()
+      .pipe(debounceTime(1000), takeUntil(this.unsubscribe$))
+      .subscribe(currentState => {
+        this.hasNetworkConnection = currentState.hasNetworkConnection;
+        this.hasInternetAccess = currentState.hasInternetAccess;
+        this.status = this.hasNetworkConnection && this.hasInternetAccess ? 'ONLINE' : 'OFFLINE';
+        console.log(`${this.status} - ${new Date()}`);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+    console.log(`Unsuscribe - ${this.status} - ${new Date()}`);
+  }
 
   title = 'pwa_sample';
+  
 }
+

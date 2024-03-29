@@ -1,14 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ListaVentaComponent } from './lista-venta/lista-venta.component';
 import { ScannerComponent } from './scanner/scanner.component';
-import { ConnectionService, ConnectionServiceModule } from 'ngx-connection-service';
+import { ConnectionService } from 'ngx-connection-service';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ListaVentaComponent, ScannerComponent],
+  imports: [RouterOutlet, ScannerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

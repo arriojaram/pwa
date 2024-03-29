@@ -1,0 +1,7 @@
+zxing-scanner {
+    display: block; /* Asegura que el elemento ocupe todo el ancho contenedor */
+    max-width: 400px; /* Cambia esto según tus necesidades */
+    margin: auto; /* Centra el escáner si es menor que el contenedor */
+    height: auto; /* Ajusta la altura automáticamente */
+  }
+  

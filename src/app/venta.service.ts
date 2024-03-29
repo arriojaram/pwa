@@ -23,14 +23,15 @@ export class VentaService {
 
   addProduct(code: number)
   {
-    const product = this.productCatalog.find(p => p.id === code);
+    var prodId = Math.floor(Math.random() * 30) + 1;
+    const product = this.productCatalog.find(p => p.id === prodId);
     if(product == undefined)
     {
       return false;
     }
     else
     {
-      var p = new Producto(1, product.id, product.title, product.price, product.price);
+      var p = new Producto(1, code.toString(), product.title, product.price, product.price);
       this.ventaProductos.push(p);
       return true;
     }

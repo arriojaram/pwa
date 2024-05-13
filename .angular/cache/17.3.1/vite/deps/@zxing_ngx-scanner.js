@@ -1,4 +1,7 @@
 import {
+  FormsModule
+} from "./chunk-JMFK3YWO.js";
+import {
   ArgumentException_default,
   AztecReader_default,
   BarcodeFormat_default,
@@ -20,13 +23,10 @@ import {
   NotFoundException_default,
   PDF417Reader_default,
   QRCodeReader_default
-} from "./chunk-FXHSITWM.js";
-import {
-  FormsModule
-} from "./chunk-O2OJXMDP.js";
+} from "./chunk-Y6D46DNR.js";
 import {
   CommonModule
-} from "./chunk-AT2CF3YS.js";
+} from "./chunk-2XOJXUKK.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -48,10 +48,10 @@ import {
   ɵɵstyleProp,
   ɵɵtext,
   ɵɵviewQuery
-} from "./chunk-CPAWAHBD.js";
+} from "./chunk-WOSCXM54.js";
 import {
   BehaviorSubject
-} from "./chunk-WSA2QMXP.js";
+} from "./chunk-T7RKEGOE.js";
 import {
   __async,
   __spreadProps,
